@@ -1,19 +1,20 @@
-version: '3'
+version: '3.7'
 
 services:
   frontend:
     image: frontend-image
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: any
     ports:
-      - "80:80"
-    networks:
-      - webnet
+      - "8080:80"
 
   backend:
     image: backend-image
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: any
     ports:
       - "3000:3000"
-    networks:
-      - webnet
-
-networks:
-  webnet:
